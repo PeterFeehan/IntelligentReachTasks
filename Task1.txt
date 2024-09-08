@@ -1,0 +1,178 @@
+Task 1
+
+Methodologically demonstrate your ability using Black box testing or any other testing heuristics you are familiar with. Write down your thought process and any findings.
+
+Assumptions:
+
+- We are testing just https://www.google.com and not other pages under this domain such as images "https://www.google.com/imghp?hl=en&ogbl" or specific searches
+- https://www.google.com shows a default google page and does not include any "doodles" or other specialist events
+- https://www.google.com is being accessed from the UK
+- https://www.google.com has not been visited before
+- no google account is logged in
+
+Process 
+
+Step 1 Observation:
+
+- Find anywhere users can interact with the page
+- Make assumptions on what they should do. A well designed website should be obvious in it capabilities (see Norman Doors)
+
+Results:
+
+- On first navigation to the page a "Before you continue" window is presented.
+	1 - Pressing "Accept all" removes this pop-up
+	2 - Pressing "Reject all" removes this pop-up
+	3 - Pressing "More options" allows you to customise my preferences for cookies
+	4 - Pressing "Privacy" changes the page to a page of privacy information
+	5 - Pressing "Terms" changes the page to a terms and conditions of use page
+	6 - Pressing "Sign in" changes the page to a sign in page
+	7 - Clicking the language button changes the language of the whole page to the selected language
+
+- Once cookies have been accepted
+	1 - Pressing "About" changes the page to an about page
+	2 - Pressing "Store" changes the page to the google store
+	3 - Pressing "Gmail" changes the page to Gmail
+	4 - Pressing "Images" changes the page to an about page
+	5 - Pressing the 9 dots in the corner opens the apps menu
+	5 - Pressing "Sign in" changes the page to a sign in page
+	6 - Entering any characters into the search bar and pressing google search should take you to the search results for that string
+	7 - Pressing "I'm Feeling Lucky" takes you to a random page
+	8 - Pressing "Privacy" changes the page to a page of privacy information
+	9 - Pressing "Terms" changes the page to a terms and conditions of use page
+	10 - Pressing "Settings" changes the page to a settings page
+	11 - Pressing "Advertising" changes the page to an information page on advertising
+	12 - Pressing "Business" changes the page to an information page on Googles business practices
+	13 - Pressing "How Search works" changes the page to an information page on how google works
+	14 - Pressing search by image allows you to paste in an image to search with
+	15 - Pressing search by voice uses the computers microphone to search via speach to text
+
+
+
+Step 2 Happy day
+
+- For each input identified above, interact in a way you expect to produce a valid result
+- Note anything that does not work as intended
+
+Results Taken 2024-09-07/08:
+
+- On first navigation to the page a "Before you continue" window is presented.
+	1 - Expected: Pressing "Accept all" removes this pop-up
+		Actual: Matches expected
+
+	2 - Expected: Pressing "Reject all" removes this pop-up
+		Actual: Matches expected
+
+	3 - Expected: Pressing "More options" allows you to customise my preferences for cookies
+		Actual: Navigates to new cookies page. Within expectations
+
+	4 - Expected: Pressing "Privacy" changes the page to a page of privacy information
+		Actual: Matches expected
+
+	5 - Expected: Pressing "Terms" changes the page to a terms and conditions of use page
+		Actual: Matches expected
+
+	6 - Expected: Pressing "Sign in" changes the page to a sign in page
+		Actual: Matches expected
+
+	7 - Expected: Clicking the language button changes the language of the whole page to the selected language
+		Actual: Matches expected
+
+- Once cookies have been accepted
+	1 - Pressing "About" changes the page to an about page
+		Actual: Matches expected
+
+	2 - Pressing "Store" changes the page to the google store
+		Actual: Matches expected
+
+	3 - Pressing "Gmail" changes the page to Gmail
+		Actual: Matches expected
+
+	4 - Pressing "Images" changes the page to an about page
+		Actual: Matches expected, does remove some button options. Specfically: Gmail, store, I'm Feeling Lucky, Google search. Moves About to the bottom of the page.
+		Images button also removed though this is expected
+
+	5 - Pressing the 9 dots in the corner opens the apps menu
+		Actual: Matches expected. Extension click each app and ensure it navigates to the expected site
+
+	5 - Pressing "Sign in" changes the page to a sign in page
+		Actual: Matches expected
+
+	6 - Entering any characters into the search bar and pressing google search should take you to the search results for that string
+		Actual: Matches expected. Not noted above is the search will suggest possible options for your character string
+
+	7 - Pressing "I'm Feeling Lucky" takes you to a random page
+		Actual: Matches expected. More specfically a random search page. Results vary as google trends is also an option
+		
+	8 - Pressing "Privacy" changes the page to a page of privacy information
+		Actual: Matches expected
+
+	9 - Pressing "Terms" changes the page to a terms and conditions of use page
+		Actual: Matches expected
+
+	10 - Pressing "Settings" changes the page to a settings page
+		Actual: Settings opens a new menu. Extension to this test should be to check each option is correct
+
+	11 - Pressing "Advertising" changes the page to an information page on advertising
+		Actual: Matches expected. More specifically the page describes how to adverties on Google
+
+	12 - Pressing "Business" changes the page to an information page on Googles business practices
+		Actual: Takes you to a business tools page. Within accepted options
+
+	13 - Pressing "How Search works" changes the page to an information page on how google works
+		Actual: Matches expected
+
+	14 - Pressing search by image allows you to paste in an image to search with. Paste in a jpeg and search this takes you to a page of images that are similar or match
+		Actual: Matches expected. Multiple ways to upload an image. This test can be expanded
+
+	15 - Pressing search by voice uses the computers microphone to search via speach to text
+		Actual: Matches expected. Noise on the microphone lead to the search time taking longer
+
+
+Step 3 Edge cases
+
+- For every area where a users can make an alternative input use an unsual case. This requires creativity.
+Example:
+
+	Image search takes an image. Can it support every file format? jpeg, png, bitmap, tiff etc.
+
+	The search bar allows for character entry. 
+		
+		- Oͨrͣ ⷫwiͥllͧ ̾iͤt ͭcͤaͯuͭsᶫeͥ ⷦpͤroͭbͪlͥe̾ms (Can I use text like this or will it cause problems)
+			Result: As they are standard multilated characters they do return a search query
+
+		- Can it handle SQL injection (; DROP TABLE *; )
+			Result: Searches the string, no adverse affects
+
+		- Can it handle multi-byte characters: 🔥🔥ᛈᛖᛏᛖᚱᛋ🃏テスト🥸; DROP TABLE *;
+			Result: Search works with multi byte characters
+
+		- Will it allow a search with no characters
+			Result: No button does nothing
+
+		- What is the character limit, can I exceed it? What happens if I do
+			Result: It's 2048 characters. The search bar wont allow any more.
+				Adding more characters and pastint the resulting string has the last characters removed
+
+Step 4 Sad Day
+
+- Where possible; enter an input that should not be possible
+
+Google is pretty clever. There's not much I can try for this one. Possible options are:
+
+	click a button 1000 times in less than a second but this requires automation
+	make many requiests at once (also requires automation)
+	use an image of ridiculous size for image search
+
+Step 5 automation
+
+Most of the above tests are boring and monotonous: Press button A go to site Before
+This can easily be done with selenium, find asset A (button) assetA.click() then verify that url now matches expected url
+
+Happy day tests "Once cookies have been accepted" 1-5 and 8, 9, 11-13 should be very easy to automate 6 may require some 
+string comprehension and 7 is tricky because of the random element but potentially possible
+
+Most of the edge cases I suggested are entirley possible to automate to as they can be standardised strings to check for the things I mentioned.
+Additionally we can have a bank of images in various formats to paste into the image search section.
+
+While its possible that 15, the voice search function, can be automated, it would require looking into. It may not be worth the time as we have
+just reduced the manual component of these tests considerably
