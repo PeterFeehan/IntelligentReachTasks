@@ -16,6 +16,6 @@ Please follow these steps to setup and run the tests:
 
 1 - Pull this repository
 2 - Open VisualStudio
-3 - Open the solution task2.sln found at IntelligentReachTasks\task2\task2.sln within this repo in VisualStudio
+3 - Open the solution task2.sln found at Tasks\task2\task2.sln within this repo in VisualStudio
 4 - Open VisualStudio's test explorer
 5 - Select run all tests
