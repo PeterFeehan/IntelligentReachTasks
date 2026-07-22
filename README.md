@@ -1,4 +1,4 @@
-# IntelligentReachTasks
+# Tasks
 
 Task 1
 Below is link to Google Search we would like you to test it.
